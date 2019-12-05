@@ -48,7 +48,8 @@ namespace DictClean
     {
         static void Main(string[] args)
         {
-            string myfilepath = @"M:\MichelangeloMarchesi\_CodeDevelopment\source\repos\DictClean\Data\";
+           /// C:\Users\k1601808\Source\Repos\MariaShulgina19\DictClean\Data\
+            string myfilepath = @"C:\Users\k1601808\Source\Repos\MariaShulgina19\DictClean\Data\";
             string myfilename = "parole_frek_Fi_1339787_to_normalize.csv";
             string myfullpath = "";
             string myseparator = " ";
@@ -68,7 +69,7 @@ namespace DictClean
             for (int i=1; i<100; i++)
             {
                 int jumper = 10000 * i;
-                Console.Write(" {0}) {1}{2}", myWordList.Keys.ElementAt(jumper), myWordList.Values.ElementAt(jumper), ";");
+                Console.Write("\n {0}) {1}{2}", myWordList.Keys.ElementAt(jumper), myWordList.Values.ElementAt(jumper), ";");
             }
 
             Console.WriteLine("");
