@@ -88,7 +88,8 @@ namespace DictClean
             {
                 foreach (KeyValuePair<int, string> kvPair in mydict)
                 {
-                    fileWriter.WriteLine("{0}{1} {2}{3}", kvPair.Key.ToString(), separatedby, kvPair.Value, Environment.NewLine);
+                    //fileWriter.WriteLine("{0}{1} {2}{3}", kvPair.Key.ToString(), separatedby, kvPair.Value, Environment.NewLine);
+                    fileWriter.WriteLine("\n{0}{1} {2}{3}", kvPair.Key.ToString(), separatedby, kvPair.Value, Environment.NewLine);
                 }
                 fileWriter.Close();
             }

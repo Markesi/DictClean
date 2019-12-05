@@ -1,0 +1,12 @@
+Marian comments // 
+1. you have very interesting topic for your program
+2. it can work with big amount of data!
+3. May be need to add READ me file to help to understand more what you program is doing
+4. During test this lines have been changed:
+Console.Write("\n {0}) {1}{2}", myWordList.Keys.ElementAt(jumper), myWordList.Values.ElementAt(jumper), ";");
+\n has been added to improve visualization
+
+string myfilepath = @"C:\Users\k1601808\Source\Repos\MariaShulgina19\DictClean\Data\";
+file pach been changed to see file
+
+Good luck!! 
