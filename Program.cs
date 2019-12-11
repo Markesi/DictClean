@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics; // for execution time measurement
+using System.IO;
 
 
 /* Project DictClean
@@ -48,7 +49,21 @@ namespace DictClean
     {
         static void Main(string[] args)
         {
-            string myfilepath = @"M:\MichelangeloMarchesi\_CodeDevelopment\source\repos\DictClean\Data\";
+            
+            /* TESTER! set the current filepath of the test files under the "Data" directory
+             * of  your fork. Rigth click on the file name (in the Solution explorer) and choose
+             * properties (Alt+Enter) to find the filepath.
+             *
+             * example: string myfilepath = @"M:\MichelangeloMarchesi\_CodeDevelopment\source\repos\DictClean\Data\";
+             */
+
+            string myfilepath = @"C:\Users\Oma\source\repos\Markesi\DictClean\Data\"; //just for testing
+
+            /* this is the right way when the application is delivered as exe file
+            string myfilepath = Directory.GetCurrentDirectory() + @"\data\";
+            string myfilepath = @"\Data\";
+            */
+
             string myfilename = "parole_frek_Fi_1339787_to_normalize.csv";
             string myfullpath = "";
             string myseparator = " ";
