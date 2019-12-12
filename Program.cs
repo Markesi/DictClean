@@ -71,7 +71,12 @@ namespace DictClean
             string myfullpath = fn.GetcsvPath(myfilepath, myfilename);
             string myseparator = " ";
 
+
+            
             IDictionary<int, string> myWordList = new Dictionary<int, string>();
+            // reversed version of the dictionary
+            IDictionary<string, int> myWordListsi = new Dictionary<string, int>();
+
 
             MyDictionary xm = new MyDictionary();
 
@@ -103,13 +108,17 @@ namespace DictClean
 
             // testing file writing of the wordlist to csv file
             Console.WriteLine("Writing {0} words of dictionary to a csv file.", myWordList.Count);
-            
+
+            Console.WriteLine("\n Reversing and cleaning from duplicates");
+            myWordListsi = xm.ReverseUniqueDict(myWordList);
+
+
             myseparator = ";";
-            string mynewfilename = "dict_fi_ordered_asc_01.csv";
+            string mynewfilename = "dict_fi_ordered_asc_uniques_01.csv";
             myfullpath = myfilepath + "\\"+ mynewfilename;
-            xm.SaveDictionary(myfullpath, myseparator, myWordList);
+            xm.SaveDictionarysi(myfullpath, myseparator, myWordListsi);
                         
-            Console.WriteLine("Saved {0} words in a csv file (separated by \"{1}\" at: {2}.", myWordList.Count, myseparator, myfullpath);
+            Console.WriteLine("Saved {0} words in a csv file (separated by \"{1}\" at: {2}.", myWordListsi.Count, myseparator, myfullpath);
             
             Console.WriteLine("");
             Console.WriteLine("Press enter to continue");

@@ -1,3 +1,5 @@
 ﻿Reverse the IDictionary to <string,int> Since there can be only unique key
 This eliminates the necessity to clean the dictionary from duplicates
 see https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2?view=netframework-4.8
+
+Proceed 

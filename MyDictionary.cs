@@ -85,7 +85,7 @@ namespace DictClean
 
 
         // Write the entire word list (mydictionary) into a file
-        public void SaveDictionary(string myfilepath, string separatedby, IDictionary<int, string> mydict)
+        public void SaveDictionaryis(string myfilepath, string separatedby, IDictionary<int, string> mydict)
         {
             // measuring time in the operation
             Stopwatch sw = new Stopwatch();
@@ -107,13 +107,49 @@ namespace DictClean
             Console.WriteLine("File writing elapsed={0}", sw.Elapsed);
         }
 
-
-   
-
-        // To do the removal of duplicates in the dictionary
-        public IDictionary<int, string> CleanDictionary(IDictionary<int, string> dict)
+        public void SaveDictionarysi(string myfilepath, string separatedby, IDictionary<string, int> mydictsi)
         {
-            return dict;
+            // measuring time in the operation
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            using (StreamWriter fileWriter = new StreamWriter(myfilepath))
+            {
+                foreach (KeyValuePair<string, int> kvPair in mydictsi)
+                {
+                    // fileWriter.WriteLine("{0}{1} {2}{3}", kvPair.Key.ToString(), separatedby, kvPair.Value, Environment.NewLine);
+                    fileWriter.WriteLine("{0}{1}{2}",
+                                         kvPair.Key.ToString(),
+                                         separatedby,
+                                         kvPair.Value);
+                }
+                fileWriter.Close();
+            }
+            sw.Stop();
+            Console.WriteLine("File writing elapsed={0}", sw.Elapsed);
+        }
+
+
+
+        // To remove duplicates in the dictionary
+        public IDictionary<string, int> ReverseUniqueDict(IDictionary<int, string> dict)
+        {
+            IDictionary<string, int> wlsi = new Dictionary<string, int>();
+
+            foreach (KeyValuePair<int, string> kvPair in dict)
+            {
+                try
+                {
+                    wlsi.Add(kvPair.Value, kvPair.Key);
+                }
+                catch (ArgumentException)
+                {
+                   // Console.Write(kvPair.Value + " already present! ");
+                }
+               
+            }
+
+            return wlsi;
         }
 
         public IDictionary<int, string> OrderDictionary( /*string sense, string type,*/ IDictionary<int, string> mydict)

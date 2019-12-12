@@ -14,17 +14,13 @@ namespace DictClean
 
             string newcsvpath = "";
             string newcsvname = "";
-            // There have to be a chance to modify the connection parameters
-            // Requesting Connection Parameters to the user
-
+           
             do
             {
                 Console.Clear();
-                Console.WriteLine("This console application corrects a csv file of words in ine language\n" +
-                    "and requires the full path to the work file.\n" +
-                    "If you do not enter a value, the default parameters will be used.\n" +
-                    "The default path is: " + defaultpath + "\\" + defaultname +" !");
-                Console.Write("Do you want to set new connection parameters (username, password, databasename) ? [K / E]:");
+                Console.WriteLine("This console application requires the full path to the work file.\n" +
+                                  "The default path is: " + defaultpath + "\\" + defaultname +" !");
+                Console.Write("Do you want change it ? [K / E]:");
                 userchoice = Console.ReadLine();
 
                 userchoice = userchoice.ToUpperInvariant();
@@ -33,16 +29,16 @@ namespace DictClean
                 {
                     Console.Clear();
 
-                    Console.WriteLine("Please provide new path to the csv file.");
-                    Console.Write("Database username [{0}]: ", defaultpath);
+                    Console.WriteLine("Please provide the new filepath.");
+                    Console.Write("Path to the folder [{0}]: ", defaultpath);
                     newcsvpath = Console.ReadLine();
                     
                     Console.Write("File name [{0}]:", defaultname);
                     newcsvname = Console.ReadLine();
 
-                    Console.Write("Please check the correctness of the parameters that you gave.\n" +
-                        "The file path is: " + newcsvpath + "\\" + newcsvname + " !\n" +
-                        "Are you sure to proceed [K / E]: ");
+                    Console.Write("Please check the new filepath:\n" +
+                        newcsvpath + "\\" + newcsvname +
+                        ". Are you sure to proceed [K / E]: ");
                     userchoice = Console.ReadLine();
                     userchoice = userchoice.ToUpperInvariant();
 
@@ -52,7 +48,7 @@ namespace DictClean
                     }
                     else
                     {
-                        // It's important to get 
+                        // It's important to get the right path
                         Console.WriteLine("\n Please retry to provide the parameters. \n Press any key to retry.");
                         Console.ReadLine();
                     }
@@ -81,7 +77,6 @@ namespace DictClean
 
             return mycsvfullpath;
 
-            // ** END CHANGES
         }
 
     }
