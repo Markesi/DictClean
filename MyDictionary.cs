@@ -147,7 +147,7 @@ namespace DictClean
             }
 
             sw.Stop();
-            Console.WriteLine("found {} original terms and {} duplicates.", origwd, duplwd);
+            Console.WriteLine("found {0} original terms and {1} duplicates.", origwd, duplwd);
             Console.WriteLine("Dictionary Duplicate Removal elampsed={0}", sw.Elapsed);
             return wlsi;
         }
