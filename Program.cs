@@ -106,7 +106,7 @@ namespace DictClean
             
             myseparator = ";";
             string mynewfilename = "dict_fi_ordered_asc_01.csv";
-            myfullpath = myfilepath + mynewfilename;
+            myfullpath = myfilepath + "\\"+ mynewfilename;
             xm.SaveDictionary(myfullpath, myseparator, myWordList);
                         
             Console.WriteLine("Saved {0} words in a csv file (separated by \"{1}\" at: {2}.", myWordList.Count, myseparator, myfullpath);

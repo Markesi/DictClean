@@ -35,39 +35,46 @@ namespace DictClean
             // Using encoding to recover scandinavian chars from the file 
             using (var streamdata = new StreamReader(myfile, Encoding.GetEncoding("iso-8859-1")))
             {
+
+                char[] charsToTrim1 = {'@','$','#','%',')','/','\'','<','>','=','[',']','`','-', '~', '|','½', '°', '®', '©', '¡', '±','´','³', '§','£','»', '«','*','&',':','0','1', '2', '3', '4', '5','6', '7', '8', '9', ' ', '+'};
                 string strjoiner;
                 int i = 1;
                 int j = 0;
 
                 IDictionary<int, string> wl = new Dictionary<int, string>();
-                
 
+                
                 while (!streamdata.EndOfStream)
                 {
                     var readline = streamdata.ReadLine();
 
                     var values = readline.Split(separatedby);
-
+                    
                     // if the line has more than 3 blanks
                     // so has more than 4 columns
                    
                     j = 2;
                     //
                     strjoiner = "";
-                    // I want the string contained in column 3 (having index 2) and more
+                    // Since the file can be irregular (4 or more separated fileds)
+                    // and for each line I want the string
+                    // contained in column 3 (having index 2) and followings
                     // except the last one (index Length - 1)
                     do
                     {
-                        strjoiner = strjoiner + values[j];
+                        
+                        strjoiner = strjoiner + values[j].Trim(charsToTrim1); // eliminating spaces and numbers
 
                         j++;
 
                     } while (j == (values.Length - 1));
 
-                                      
 
-                    wl.Add(new KeyValuePair<int, string>(i, strjoiner));
-                    i++;
+                    if (!string.IsNullOrWhiteSpace(strjoiner)) // eliminating empty lines
+                    {
+                        wl.Add(new KeyValuePair<int, string>(i, strjoiner));
+                        i++;
+                    }
 
                     
                 }
@@ -88,7 +95,11 @@ namespace DictClean
             {
                 foreach (KeyValuePair<int, string> kvPair in mydict)
                 {
-                    fileWriter.WriteLine("{0}{1} {2}{3}", kvPair.Key.ToString(), separatedby, kvPair.Value, Environment.NewLine);
+                    // fileWriter.WriteLine("{0}{1} {2}{3}", kvPair.Key.ToString(), separatedby, kvPair.Value, Environment.NewLine);
+                    fileWriter.WriteLine("{0}{1}{2}",
+                                         kvPair.Key.ToString(),
+                                         separatedby,
+                                         kvPair.Value);
                 }
                 fileWriter.Close();
             }
@@ -99,9 +110,11 @@ namespace DictClean
 
    
 
-        
-        public IDictionary<int, string> CleanDictionary(string checkfor, string action, IDictionary<int, string> dict)
+        // To do the removal of duplicates in the dictionary
+        public IDictionary<int, string> CleanDictionary(IDictionary<int, string> dict)
         {
+            
+
             return dict;
         }
 

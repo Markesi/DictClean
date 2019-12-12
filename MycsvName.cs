@@ -59,13 +59,13 @@ namespace DictClean
                 }
                 else if (userchoice == "E")
                 {
-                    Console.WriteLine("\n The program will open the default file: ");
+                    
                     newcsvpath = defaultpath;
                     newcsvname = defaultname;
-             
+                    
                     correct = true;
                     // Print to screen for debug
-                    Console.WriteLine("The connection string is: " + newcsvpath + "\\" + newcsvname);
+                    Console.Write("\n The program will open the default file: " + newcsvpath + "\\" + newcsvname);
                     Console.ReadLine();
 
                 }
