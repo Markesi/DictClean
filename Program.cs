@@ -106,12 +106,12 @@ namespace DictClean
             Console.ReadLine();
             // End sorting test
 
-            // testing file writing of the wordlist to csv file
-            Console.WriteLine("Writing {0} words of dictionary to a csv file.", myWordList.Count);
-
+            
             Console.WriteLine("\n Reversing and cleaning from duplicates");
             myWordListsi = xm.ReverseUniqueDict(myWordList);
 
+            // testing file writing of the wordlist to csv file
+            Console.WriteLine("Writing {0} words of dictionary to a csv file.", myWordListsi.Count);
 
             myseparator = ";";
             string mynewfilename = "dict_fi_ordered_asc_uniques_01.csv";

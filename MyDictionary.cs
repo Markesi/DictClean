@@ -115,20 +115,40 @@ namespace DictClean
         public IDictionary<string, int> ReverseUniqueDict(IDictionary<int, string> dict)
         {
             IDictionary<string, int> wlsi = new Dictionary<string, int>();
+            // Counting Duplicates and Originals
+            int duplwd = 0;
+            int origwd = 0;
+
+            // measuring time in the operation
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
 
             foreach (KeyValuePair<int, string> kvPair in dict)
             {
                 try
                 {
                     wlsi.Add(kvPair.Value, kvPair.Key);
+                    origwd++;
+                    if ((origwd % 10000) == 0)
+                    {
+                        Console.Write("+");
+                    }
                 }
                 catch (ArgumentException)
                 {
-                    // Console.Write(kvPair.Value + " already present! ");
+                    duplwd++;
+                    if ((duplwd % 1000) == 0)
+                    {
+                        Console.Write("_");
+                        // Console.Write(kvPair.Value + " already present! ");
+                    }
                 }
 
             }
 
+            sw.Stop();
+            Console.WriteLine("found {} original terms and {} duplicates.", origwd, duplwd);
+            Console.WriteLine("Dictionary Duplicate Removal elampsed={0}", sw.Elapsed);
             return wlsi;
         }
 
