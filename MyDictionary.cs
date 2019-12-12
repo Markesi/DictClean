@@ -69,10 +69,10 @@ namespace DictClean
 
                     } while (j == (values.Length - 1));
 
-
-                    if (!string.IsNullOrWhiteSpace(strjoiner)) // eliminating empty lines
+                    // Removing single and two char words
+                    if (!string.IsNullOrWhiteSpace(strjoiner) && (strjoiner.Length > 1)) // eliminating empty lines
                     {
-                        wl.Add(new KeyValuePair<int, string>(i, strjoiner));
+                        wl.Add(new KeyValuePair<int, string>(i, strjoiner.ToUpperInvariant())); //words are made uppercase
                         i++;
                     }
 
