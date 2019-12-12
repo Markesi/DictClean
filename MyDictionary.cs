@@ -83,8 +83,57 @@ namespace DictClean
             }
         }
 
+        // Order the Dictionary as IS (integer, string)
+        public IDictionary<int, string> OrderDictionary( /*string sense, string type,*/ IDictionary<int, string> mydict)
+        {
 
-        // Write the entire word list (mydictionary) into a file
+
+            IDictionary<int, string> wl = new Dictionary<int, string>();
+            // testing by measuring time
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            // Use OrderBy method.value
+            foreach (KeyValuePair<int, string> kvPair in mydict.OrderBy(i => i.Value))
+            {
+                wl.Add(kvPair);
+
+                // testing by print at console
+                // Console.WriteLine(kvPair);
+
+            }
+            // return time of execution
+            sw.Stop();
+            Console.WriteLine("Elapsed: {0}", sw.Elapsed);
+
+            //
+            return wl;
+        }
+
+
+        // To remove duplicates in the dictionary reversing to SI (String Integer)
+        public IDictionary<string, int> ReverseUniqueDict(IDictionary<int, string> dict)
+        {
+            IDictionary<string, int> wlsi = new Dictionary<string, int>();
+
+            foreach (KeyValuePair<int, string> kvPair in dict)
+            {
+                try
+                {
+                    wlsi.Add(kvPair.Value, kvPair.Key);
+                }
+                catch (ArgumentException)
+                {
+                    // Console.Write(kvPair.Value + " already present! ");
+                }
+
+            }
+
+            return wlsi;
+        }
+
+
+        // Write the entire word list (mydictionary integer string) into a file
         public void SaveDictionaryis(string myfilepath, string separatedby, IDictionary<int, string> mydict)
         {
             // measuring time in the operation
@@ -107,6 +156,9 @@ namespace DictClean
             Console.WriteLine("File writing elapsed={0}", sw.Elapsed);
         }
 
+
+
+        // Save the String-Int form of the dictionery (mydictionary string, integer) into a file
         public void SaveDictionarysi(string myfilepath, string separatedby, IDictionary<string, int> mydictsi)
         {
             // measuring time in the operation
@@ -119,9 +171,9 @@ namespace DictClean
                 {
                     // fileWriter.WriteLine("{0}{1} {2}{3}", kvPair.Key.ToString(), separatedby, kvPair.Value, Environment.NewLine);
                     fileWriter.WriteLine("{0}{1}{2}",
-                                         kvPair.Key.ToString(),
+                                         kvPair.Key,
                                          separatedby,
-                                         kvPair.Value);
+                                         kvPair.Value.ToString()); // the value is integer
                 }
                 fileWriter.Close();
             }
@@ -131,53 +183,8 @@ namespace DictClean
 
 
 
-        // To remove duplicates in the dictionary
-        public IDictionary<string, int> ReverseUniqueDict(IDictionary<int, string> dict)
-        {
-            IDictionary<string, int> wlsi = new Dictionary<string, int>();
-
-            foreach (KeyValuePair<int, string> kvPair in dict)
-            {
-                try
-                {
-                    wlsi.Add(kvPair.Value, kvPair.Key);
-                }
-                catch (ArgumentException)
-                {
-                   // Console.Write(kvPair.Value + " already present! ");
-                }
-               
-            }
-
-            return wlsi;
-        }
-
-        public IDictionary<int, string> OrderDictionary( /*string sense, string type,*/ IDictionary<int, string> mydict)
-        {
-
-
-            IDictionary<int, string> wl = new Dictionary<int, string>();
-            // testing by measuring time
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-
-                        // Use OrderBy method.value
-            foreach (KeyValuePair<int, string> kvPair in mydict.OrderBy(i => i.Value))
-            {
-                wl.Add(kvPair);
-
-               // testing by print at console
-               // Console.WriteLine(kvPair);
-                
-            }
-            // return time of execution
-            sw.Stop();
-            Console.WriteLine("Elapsed: {0}", sw.Elapsed);
-
-            //
-            return wl;
-        }
-
+        
+        
 
 
         // Read line by line and remove numeric sequences
