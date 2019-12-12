@@ -129,7 +129,7 @@ namespace DictClean
                 {
                     wlsi.Add(kvPair.Value, kvPair.Key);
                     origwd++;
-                    if ((origwd % 10000) == 0)
+                    if ((origwd % 100000) == 0)
                     {
                         Console.Write("+");
                     }
@@ -137,7 +137,7 @@ namespace DictClean
                 catch (ArgumentException)
                 {
                     duplwd++;
-                    if ((duplwd % 1000) == 0)
+                    if ((duplwd % 5000) == 0)
                     {
                         Console.Write("_");
                         // Console.Write(kvPair.Value + " already present! ");
