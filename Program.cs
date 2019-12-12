@@ -57,7 +57,7 @@ namespace DictClean
              * example: string myfilepath = @"M:\MichelangeloMarchesi\_CodeDevelopment\source\repos\DictClean\Data\";
              */
 
-            string myfilepath = @"C:\Users\Oma\source\repos\Markesi\DictClean\Data\"; //just for testing
+            string myfilepath = @"C:\Users\Oma\source\repos\Markesi\DictClean\Data"; //just for testing
 
             /* this is the right way when the application is delivered as exe file
             string myfilepath = Directory.GetCurrentDirectory() + @"\data\";
@@ -65,7 +65,10 @@ namespace DictClean
             */
 
             string myfilename = "parole_frek_Fi_1339787_to_normalize.csv";
-            string myfullpath = "";
+            MycsvName fn = new MycsvName();
+
+
+            string myfullpath = fn.GetcsvPath(myfilepath, myfilename);
             string myseparator = " ";
 
             IDictionary<int, string> myWordList = new Dictionary<int, string>();
@@ -73,7 +76,7 @@ namespace DictClean
             MyDictionary xm = new MyDictionary();
 
             //test advice
-            myfullpath = myfilepath + myfilename;
+            
             Console.WriteLine("Loading dictionaryfile: {0}", myfullpath);
 
             myWordList = xm.LoadDictionary(myfullpath, myseparator);
