@@ -113,8 +113,6 @@ namespace DictClean
         // To do the removal of duplicates in the dictionary
         public IDictionary<int, string> CleanDictionary(IDictionary<int, string> dict)
         {
-            
-
             return dict;
         }
 
@@ -127,12 +125,14 @@ namespace DictClean
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            // Use OrderBy method.
+                        // Use OrderBy method.value
             foreach (KeyValuePair<int, string> kvPair in mydict.OrderBy(i => i.Value))
             {
                 wl.Add(kvPair);
-                // testing by print at console
-                // Console.WriteLine(kvPair);
+
+               // testing by print at console
+               // Console.WriteLine(kvPair);
+                
             }
             // return time of execution
             sw.Stop();
